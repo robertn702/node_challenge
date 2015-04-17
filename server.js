@@ -1,8 +1,8 @@
-var express        = require('express');
-var app            = express();
-var bodyParser     = require('body-parser');
+var express = require('express');
+var app = express();
+var bodyParser = require('body-parser');
 var methodOverride = require('method-override');
-var cookieParser   = require('cookie-parser');
+var cookieParser = require('cookie-parser');
 
 require('dotenv').load();
 
@@ -14,15 +14,12 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(methodOverride('X-HTTP-Method-Override'));
 app.use(express.static(__dirname + '/public'));
 
-// routes ==================================================
-require(__dirname + '/app/routes')(app, passport); // configure our routes
+// routes file
+require(__dirname + '/app/routes')(app);
 
-// start app ===============================================
-// startup our app at http://localhost:8080
+// start server
 app.listen(port);
+console.log('Listening to port: ', port);
 
-// shoutout to the user
-console.log('Hungry on port ' + port);
 
-// expose app
 exports = module.exports = app;
