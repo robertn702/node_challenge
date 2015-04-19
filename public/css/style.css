@@ -3,6 +3,11 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
   /*padding: 0;*/
 }
 
+html, body {
+  height: 100%;
+  width: 100%;
+}
+
 .nav, .pagination, .carousel, .panel-title a {
   cursor: pointer;
 }
@@ -19,19 +24,17 @@ ul {
   padding: 0px;
   margin: 0 auto 0 auto;
   box-shadow: 1px 0px 5px #666666;
-  /*background-color: blue;*/
+  overflow: scroll;
 }
 
 #title {
   padding: 20px 10px 20px 10px;
   text-align: center;
   background-color: #eeeeee;
-  /*background-color: red;*/
 }
 
 #list-container {
   padding: 20px 50px 10px 50px;
-  /*background-color: green;*/
 }
 
 #list {
@@ -39,9 +42,5 @@ ul {
 }
 
 #list input[type="text"] {
-  width: 400px;
-}
-
-.input {
-  /*background-color: orange;*/
+  width: 500px;
 }
