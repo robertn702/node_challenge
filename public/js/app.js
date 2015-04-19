@@ -7,11 +7,11 @@ var app = angular.module('app', [
 ])
 
 .config(function($stateProvider, $urlRouterProvider) {
-  // localStorage.clear()
+  $urlRouterProvider.when('', '/');
+  $urlRouterProvider.otherwise('/404');
 
-  $urlRouterProvider.otherwise('/');
   $stateProvider
-    .state('create', {
+    .state('new', {
       url: '/',
       templateUrl: 'views/newList.html',
       controller: 'newListController'
@@ -20,5 +20,9 @@ var app = angular.module('app', [
       url: '/list/:uuid',
       templateUrl: 'views/list.html',
       controller: 'listController'
+    })
+    .state('404', {
+      url: '/404',
+      template: "404 error"
     })
 })

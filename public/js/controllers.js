@@ -7,7 +7,7 @@ angular.module('app.controllers', [])
   $scope.addItem = function(newItem) {
     $scope.newItem = "";
     $scope.list.items.push({
-      id: $scope.list.length,
+      // id: $scope.list.length,
       date: new Date(),
       text: newItem,
       complete: false
@@ -24,14 +24,17 @@ angular.module('app.controllers', [])
 })
 
 
-.controller('listController', function($scope, uuid4, $stateParams, List) {
+.controller('listController', function($scope, $state, uuid4, $stateParams, List) {
   var uuid = $stateParams.uuid;
   $scope.list = List.get(uuid);
+  if(!$scope.list) {
+    $state.go('404');
+  }
 
   $scope.addItem = function(newItem) {
     $scope.newItem = "";
     $scope.list.items.push({
-      id: $scope.list.length,
+      // id: $scope.list.length,
       date: new Date(),
       text: newItem,
       complete: false
