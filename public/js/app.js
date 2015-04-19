@@ -13,7 +13,7 @@ var app = angular.module('app', [
   $stateProvider
     .state('new', {
       url: '/',
-      templateUrl: 'views/newList.html',
+      templateUrl: 'views/list.html',
       controller: 'newListController'
     })
     .state('list', {

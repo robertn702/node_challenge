@@ -1,13 +1,23 @@
 <div>
-  <h2>{{list.name}}</h2>
+  <div ng-switch on="list.name">
+    <div ng-switch-when="">
+      <h2>Create a new list</h2>
+      <input type="text" ng-model="$parent.listName" placeholder="My List Title">
+    </div>
+    <div ng-switch-default>
+      <h2>{{list.name}}</h2>
+    </div>
+  </div>
   <ul>
-    <li class="list-item" ng-repeat="item in list.items">
+    <li class="list-item" ng-repeat="item in list.items track by $index">
       <label>
-        <input type="checkbox" ng-model="list.items[$index].complete">{{item.text}}
+        <input type="checkbox" ng-model="list.items[$index].complete"> {{item.text}}
       </label>
     </li>
+    <li>
+      <input type="text" ng-model="newItem" placeholder="add item">
+      <button ng-click="addItem(newItem)">+</button><br>
+    </li>
   </ul>
-  <input type="text" ng-model="newItem" placeholder="add item"><br>
-  <button ng-click="addItem(newItem)">add an item</button><br>
-  <button ng-click="save($routeParams)">save</button>
+  <button ng-click="save(listName)">save</button>
 </div>
