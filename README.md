@@ -30,7 +30,7 @@ Frontend
 
 ## Development
 
-### Configuring Application
+### Application Env
 
 1. Follow instruction given in "example.env" file
 2. Save "example.env" file as ".env" in root directory
