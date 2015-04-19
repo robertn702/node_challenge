@@ -1,13 +1,12 @@
 angular.module('app.services', [])
 
-.factory('List', function($resource) {
+.factory('List', function(uuid4) {
   var list = {};
-  list.get = function() {
-    // console.log(JSON.parse(localStorage.getItem('list')));
-    return JSON.parse(localStorage.getItem('list'));
+  list.get = function(uuid) {
+    return JSON.parse(localStorage.getItem(String(uuid)));
   };
-  list.post = function(data) {
-    localStorage.setItem('list', JSON.stringify(data));
+  list.post = function(data, uuid) {
+    localStorage.setItem(uuid, JSON.stringify(data));
   };
   return list;
 })

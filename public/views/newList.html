@@ -1,11 +1,10 @@
 <div>
   <h2>Create a new list</h2>
-  <input type="text" placeholder="My List Title">
+  <input type="text" ng-model="listName" placeholder="My List Title">
   <ul>
-    <li class="list-item" ng-repeat="item in list">
+    <li class="list-item" ng-repeat="item in list.items">
       <label>
-        <!-- <input type="checkbox" ng-model="checkedItems[$index]">{{item.text}} -->
-        <input type="checkbox" ng-model="list[$index].complete">{{item.text}}
+        <input type="checkbox" ng-model="list.items[$index].complete">{{item.text}}
       </label>
     </li>
   </ul>

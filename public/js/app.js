@@ -1,9 +1,9 @@
 var app = angular.module('app', [
   'app.controllers',
   'app.services',
-  'ngResource',
   'ui.router',
-  'ui.bootstrap'
+  'ui.bootstrap',
+  'uuid4'
 ])
 
 .config(function($stateProvider, $urlRouterProvider) {
@@ -17,7 +17,7 @@ var app = angular.module('app', [
       controller: 'newListController'
     })
     .state('list', {
-      url: '/list',
+      url: '/list/:uuid',
       templateUrl: 'views/list.html',
       controller: 'listController'
     })
