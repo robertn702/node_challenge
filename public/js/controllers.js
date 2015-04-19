@@ -5,20 +5,21 @@ angular.module('app.controllers', [])
   $scope.list.items = [];
   $scope.list.name = "";
 
-  $scope.addItem = function(newItem) {
-    $scope.newItem = "";
-    $scope.list.items.push({
-      date: new Date(),
-      text: newItem,
-      complete: false
-    })
+  $scope.addItem = function(newItem, keyEvent) {
+    if(!keyEvent || keyEvent.which === 13) {
+      $scope.newItem = "";
+      $scope.list.items.push({
+        date: new Date(),
+        text: newItem,
+        complete: false
+      })
+    }
   };
 
   $scope.save = function() {
     var uuid = uuid4.generate();
 
     $scope.list.name = $scope.listName;
-    console.log('name: ', $scope.list.name);
     List.post($scope.list, uuid);
     $state.go('list', {uuid: uuid});
   };
@@ -30,18 +31,25 @@ angular.module('app.controllers', [])
 
   if (!$scope.list) {
     $state.go('404');
+  } else if (!$scope.list.name) {
+    $scope.list.name = "";
   }
 
-  $scope.addItem = function(newItem) {
-    $scope.newItem = "";
-    $scope.list.items.push({
-      date: new Date(),
-      text: newItem,
-      complete: false
-    })
+  $scope.addItem = function(newItem, keyEvent) {
+    if(!keyEvent || keyEvent.which === 13) {
+      $scope.newItem = "";
+      $scope.list.items.push({
+        date: new Date(),
+        text: newItem,
+        complete: false
+      })
+    }
   };
 
   $scope.save = function() {
+    if ($scope.listName) {
+      $scope.list.name = $scope.listName;
+    }
     List.post($scope.list, uuid);
   };
 })
